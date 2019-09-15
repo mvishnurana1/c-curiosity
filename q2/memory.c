@@ -79,6 +79,7 @@ int main(int argc, char *argv[])
 
     // print out the starting address and end address of the environment of this process
     printf("First address of environment variable %p \n", &environ[0]);
+    
     printf("Last address of environment variable %p \n", &environ[sizeof(environ)-1]); 
 
     // print out the starting addresses of function main, f1, and f2
