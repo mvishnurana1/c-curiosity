@@ -1,10 +1,11 @@
 /* 
- *  name;		memory.c
+ *  name Vishnu;		memory.c
  */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include <string.h>
 
 extern char **environ;
@@ -26,16 +27,20 @@ int f2(int x)
     f2_p = malloc(1000);         // dynamically allocated memory
  
     // print out the address of x
-    printf("x location = %p \n", &x); 
-    
-    // print out the addresses of f2_p and f2_x
-    printf("f2_p location = %p\n", &f2_p);
+    printf("Address of x: %p\n", &x);
 
-    printf("f2_x location = %p\n", &f2_x); 
+    // print out the addresses of f2_p, and f2_x
+    printf("Address of f2_p: %p\n", &f2_p);
+    printf("Address of f2_x: %p\n", &f2_x);  
 
     // print out the starting address of the dynamically allocated memory
-    printf("f2_p location = %p \n", &f2_p[0]); 
-   
+    printf("*********Dynamic Heap******");
+    for(int i=0; i<sizeof(f2_p); i++){
+        printf("Addresses of f2_p[%d]: %p\n", i, &f2_p[i]);    
+    }
+
+    printf("starting address of f2_p %p\n", &f2_p[0]); 
+    printf("*********End of Dynamic Heap******");
     L: f2_x = 10;
     return f2_x;
 }
@@ -49,12 +54,32 @@ void f1(int x1, int x2, float x3, char x4, double x5, int x6)
 
     f1_p2 = malloc(100);         // dynamically allocated memory
 
+    printf("\n*******Local variables******\n");
     // print out the addresses of x1, x2, x3, x4, x5, x6
-    printf("location x1 = %p\n location x2 = %p\n location x3 = %p\n location x4 = %p\n location x5 = %p\n location x6 = %p\n", &x1, &x2, &x3, &x4, &x5, &x6); 
-    // print out the addresses of f1_x, f1_y, f1_p1, f1_p2
-    printf("f1_x address = %p\n f1_y address %p\n f1_p1 address = %p\n f1_p2 address = %p\n", &f1_x,  &f1_y, &f1_p1, &f1_p2); 
+    printf("x1: %p\n", &x1);
+    printf("x2: %p\n", &x2);
+    printf("x3: %p\n", &x3);
+    printf("x4: %p\n", &x4);
+    printf("x5: %p\n", &x5);
+    printf("x6: %p\n", &x6);  
+    // print out the addresses of f1_x, f1_y, f1_p2
+    printf("f1_x: %p\n", &f1_x);
+    printf("f1_y: %p\n", &f1_y);
+
+    // print out the address of f1_p1
+    printf("f1_P1: %p\n", &f1_p1);
+    printf("\n*******END OF Local variables******\n");
+
+    printf("\n*******ON HEAP******\n");
+    // print out the address of f1_p2
+    for(int i=0; i<sizeof(f1_p2); i++){
+        printf("f1_p2[%d]: %p\n", i, &f1_p2); 
+    }  
+        printf("\n*******END OF ON HEAP******\n");
     // print out the address of the string literal "This is inside f1"
-    printf("Address of string literal (this is a string) %p\n", &f1_p1); 
+        for(int i=0; i<sizeof(f1_p1); i++){
+        printf("f1_p1[%d]: %p\n", i, &f1_p1); 
+    }  
 
     f1_y = f2(10);
     return;
@@ -62,49 +87,66 @@ void f1(int x1, int x2, float x3, char x4, double x5, int x6)
 
 int main(int argc, char *argv[])
 {
-    int i; 
+     
     printf("My OS bit size: %lu\n", sizeof(void *) * 8);
-
+    printf("\n*******COMMAND LINE********\n");
     // print out the addresses of argc, argv
-    printf("Address of argc %p \n", &argc); 
-    printf("Address of all elements in argv \n");
-    
-    for(int i = 0; i < argc; i++){
-        printf("address from argv element %d = %p\n", i, &argv[i]); 
+    printf("address of argc: %p\n", &argc); 
+
+    for(int i=0; i< sizeof(argc); i++){
+        printf("address of argv[%d]: %p\n", i, argv[i]); 
     }
 
     // print out the starting address and end address of the command line arguments of this process
-    printf("Address of the first command line arguments %p \n", &argv[0]); 
-    printf(" Address of the last command line arguments %p \n", &argv[argc-1]); 
-
-    // print out the starting address and end address of the environment of this process
-    printf("First address of environment variable %p \n", &environ[0]);
     
-    printf("Last address of environment variable %p \n", &environ[sizeof(environ)-1]); 
+    printf("first address command line argument : %p\n", &argv[0]);
+    printf("end address of command line argument: %p\n", &argv[sizeof(**argv)-1]); 
+    printf("\n*******E-O-COMMAND LINE********\n");
+    // print out the starting address and end address of the environment of this process
+    printf("\n*******ENVIRONMENT********\n");
+    printf("first address of environment  : %p\n", &environ[0]);
+    printf("last address of environment   : %p\n", &environ[sizeof(environ)-1]);
+    printf("\n*******END OF ENVIRONMENT********\n");
 
-    // print out the starting addresses of function main, f1, and f2
-    printf("Starting address of function main = %p\n", &main); 
-        printf("Starting address of function f1   = %p\n", &f1);
-            printf("Starting address of function f2   = %p\n", &f2);
+    // print out the addresses of global_x, global_y, global_array1, global_array2,
+    // global_pointer1,
+    printf("\n*************GLOBALS*******\n");
+    printf("global_x : %p\n", &global_x);
+    printf("global_y : %p\n", &global_y);
 
-    // print out the addresses of global_x, global_y, global_array1, global_array2, global_pointer1,
-    printf("address of global_x = %p\n", &global_x);
-        printf("address of global_y = %p\n", &global_y);
-            printf("address of global_array1 = %p\n", &global_array1);
-                printf("address of global_array2 = %p\n", &global_array2);
-                    printf("address of global_pointer1 = %p\n", &global_pointer1); 
-
-    // global_pointer2, global_float, global_double
-    printf("address of global_pointer2 = %p\n", &global_pointer2);
-        printf("address of global_float = %p\n", &global_float);
-            printf("address of global_double = %p\n", &global_double);
-
+    for(int i=0; i<sizeof(global_array1); i++){
+        printf("global_array1[%d]: %p\n", i, &global_array1[i]);
+    }
+     
+    for(int i=0; i<sizeof(global_array2); i++){
+        printf("global_array2[%d]: %p\n", i, &global_array2[i]);
+    }
+    
+    
+    //global_pointer2, global_float, global_double
+    printf("global_pointer2 %p\n", &global_pointer2);
+    printf("global_float %p\n", &global_float);
+    printf("global_double %p\n", &global_double);
     // print out the addresses of string literals "Hello, world!" and "bye" 
-    printf("Address of string literal hello   = %p\n", &global_array1); 
-        printf("Address of string literal bye = %p \n", &global_pointer1); 
+    printf("addresses of the string literal \'Hello World\'\n");
+    for(int i=0; i<sizeof(global_array1); i++){
+        printf("[%c]-global_array1[%d]: %p\n",global_array1[i], i, &global_array1[i]); 
+    }
 
+    printf("address of the string literal \'bye\'\n"); 
+        printf("global_pointer2 (string literal 'bye'): %p\n", &global_pointer2); 
+
+    printf("\n*****END OF GLOBALS*****\n"); 
+    
+    // print out the starting addresses of function main, f1, and f2
+    printf("\n*******FUNCTIONS********\n"); 
+    printf("main address : %p\n", main);
+    printf("f1   address : %p\n", f1);
+    printf("f2   address : %p\n", f2); 
+    printf("\n*******END OF FUNCTIONS********\n");
+    
     // call function f1 with suitable arguments such as 12, -5, 33.7, 'A', 1.896e-10, 100 
-    f1(12, -5, 33.7, 'A', 1.896e-10, 100);
+    f1(12, -5, 33.7, 'A', 1.0, 100);
 
     exit(0);
 }

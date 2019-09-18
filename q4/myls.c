@@ -122,20 +122,20 @@ int main(int argc, char* *argv){
         printf("%d\n", res);
         
         if(res != -1){
-            printf("username: %s \n", getUserName(buff, buf.st_uid));
-            printf("groupname: %s \n", getGroupName(buff, buf.st_gid));
-            printf("%ld\n", buf.st_size);
-            printf("type: %s\n", getFileType(buf.st_mode)); 
-            printf("permissions: %s\n", getAccessPermissions(buff, buf.st_mode)); 
-            printf("INode Info %ld\n", buf.st_ino);
-            printf("Number of Links %ld\n", buf.st_nlink);
+            printf("username            : %s \n", getUserName(buff, buf.st_uid));
+            printf("groupname           : %s \n", getGroupName(buff, buf.st_gid));
+            printf("size                : %ld\n", buf.st_size);
+            printf("type                : %s\n", getFileType(buf.st_mode)); 
+            printf("permissions         : %s\n", getAccessPermissions(buff, buf.st_mode)); 
+            printf("INode Info          : %ld\n", buf.st_ino);
+            printf("Number of Links     : %ld\n", buf.st_nlink);
             
             printf("Device major version: %d\n", major(buf.st_rdev)); 
             printf("Device minor version: %d\n", minor(buf.st_rdev)); 
 
-            printf("accessed time: %s\n", printTime(buf.st_atime, buff)); 
-            printf("modified time: %s\n", printTime(buf.st_mtime, buff)); 
-            printf("created time : %s\n", printTime(buf.st_ctime, buff)); 
+            printf("accessed time       : %s\n", printTime(buf.st_atime, buff)); 
+            printf("modified time       : %s\n", printTime(buf.st_mtime, buff)); 
+            printf("created time        : %s\n", printTime(buf.st_ctime, buff)); 
         }
         else{
             printf("no such file\n"); 

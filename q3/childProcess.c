@@ -7,14 +7,16 @@
 
 int main(int argc, char *argv[]){
 
+/**
+ * the program needs at least one argument to execute
+ */
     if(argc > 1){
 
-        pid_t pid[argc]; 
-        char *commandName; 
-        int status;     
+        pid_t pid[argc]; // a collection of number of arguments passsed to make the child concurrent
+        char *commandName; // stores the command name
+        int status;        // gives the status 
 
         for(int i = 1 ; i < argc; i++){
-            
             pid[i-1] = fork(); 
 
             if(pid[i-1] < 0){
@@ -22,17 +24,18 @@ int main(int argc, char *argv[]){
                 exit(1);  
             } else {
                 if(pid[i-1] == 0){
-                    commandName = strchr(argv[i], '/');
+                    commandName = strchr(argv[i], '/'); // find the occurrence of '/'
+                    // execl (path, commandName, NULL)
                     execl(argv[i], commandName, (char*)0);
 
-                    perror("execl failed...");
+                    perror("execl failed...\n");
                     exit(1);    
                 }
             }
-
             printf("%s \n", argv[i]); 
         }
 
+        // for loop for controlling the parent process for concurrency 
         for(int i=1; i<argc; i++){
             wait((int*)0);
             // testing  
@@ -47,7 +50,7 @@ int main(int argc, char *argv[]){
         }
     }
     else {
-        printf("No path entered"); 
+       printf("No path entered"); 
     }
 
     printf("All done bye-bye \n"); 
