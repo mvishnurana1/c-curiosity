@@ -112,6 +112,8 @@ char * getAccessPermissions(char * buffer, int mask){
 }
 
 int main(int argc, char* *argv){
+    DIR *directory; 
+    struct dirent *present; 
 
     struct stat buf; 
     char buff[100];
@@ -138,7 +140,13 @@ int main(int argc, char* *argv){
             printf("created time        : %s\n", printTime(buf.st_ctime, buff)); 
         }
         else{
-            printf("no such file\n"); 
+            /*
+            directory = opendir(argv[1]);
+            present   = readdir(directory);
+            sprintf(buff, "%s/%s", ".", present->d_name);
+            */ 
+            printf("no such file\n");
+            
         }
     }
     return 0; 
