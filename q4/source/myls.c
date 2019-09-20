@@ -8,32 +8,48 @@
 #include <grp.h>
 #include <sys/sysmacros.h>
 
-int getLsCommand(void); 
-
 #define BUF_SIZE 256
 
+/**
+ * The function returns the time credentials 
+ * of the file/dir.
+ */
 char* printTime(time_t time, char *buff){
     struct tm *timeinfo; 
     timeinfo = localtime(&time);
 
     char * st = buff;
+    // the function strftime formats the broken-down time tm 
+    // according to the format specs. 
+    //              %b -> abbreviated month name
+    //              %d -> day of the month ranging from 1 - 31
     strftime(buff, 8, "%b %d\t", timeinfo); 
     buff = buff +7;
+    //              %R -> 24 hour notation %H:%M
     strftime(buff, 90, "%R", timeinfo); 
 
     return st; 
 }
 
+/**
+ * The function returns the group name  
+ */
 char* getGroupName(char *buff, gid_t gid){
     struct group *grp; 
+    // the function getgrgid returns a pointer to a structure containing
+    // the group database that matches the group ID gid
     grp = getgrgid(gid);
 
     strcpy(buff, grp->gr_name); 
     return buff; 
 }
 
+/**
+ * The function returns the username  
+ */
 char* getUserName(char *buff, uid_t uid){
     struct passwd * pwd;
+    //getpwuid function searches for a matching uid in the user Database. 
     pwd = getpwuid(uid); 
 
     strcpy(buff, pwd->pw_name); 
@@ -41,8 +57,12 @@ char* getUserName(char *buff, uid_t uid){
     return buff; 
 }
 
+/**
+ * The function is essentially a switch case
+ * which returns the file type.  
+*/
 char* getFileType(int mask){
-
+    // bitwise AND for considering the bits involved in the file type 
     int type = mask & S_IFMT;
 
     switch(type){
@@ -57,8 +77,11 @@ char* getFileType(int mask){
 }
 
 struct permMask{
+    // permissions 
     char permission;
+    // mask 
     short mask;
+    // targeted index for mapping  
     int targetIndex;
 };
 
@@ -112,9 +135,6 @@ char * getAccessPermissions(char * buffer, int mask){
 }
 
 int main(int argc, char* *argv){
-    DIR *directory; 
-    struct dirent *present; 
-
     struct stat buf; 
     char buff[100];
 
@@ -131,22 +151,14 @@ int main(int argc, char* *argv){
             printf("permissions         : %s\n", getAccessPermissions(buff, buf.st_mode)); 
             printf("INode Info          : %ld\n", buf.st_ino);
             printf("Number of Links     : %ld\n", buf.st_nlink);
-            
             printf("Device major version: %d\n", major(buf.st_rdev)); 
             printf("Device minor version: %d\n", minor(buf.st_rdev)); 
-
             printf("accessed time       : %s\n", printTime(buf.st_atime, buff)); 
             printf("modified time       : %s\n", printTime(buf.st_mtime, buff)); 
             printf("created time        : %s\n", printTime(buf.st_ctime, buff)); 
         }
         else{
-            /*
-            directory = opendir(argv[1]);
-            present   = readdir(directory);
-            sprintf(buff, "%s/%s", ".", present->d_name);
-            */ 
             printf("no such file\n");
-            
         }
     }
     return 0; 

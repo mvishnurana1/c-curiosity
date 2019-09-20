@@ -1,0 +1,82 @@
+
+
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3# ls
+Source_Code_Listing  childProcess.c  executable  tests
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3# gcc -Wall ./childProcess.c -o executable/childProcess
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3# ls executable/
+childProcess
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3# cd executable/
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3/executable# ./childProcess 
+No path enteredAll done bye-bye
+
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3/executable# ./childProcess /bin/ps 
+/bin/ps 
+  PID TTY          TIME CMD
+   60 tty4     00:00:00 init
+   61 tty4     00:00:00 bash
+  126 tty4     00:00:00 childProcess   
+  127 tty4     00:00:00 ps
+Command /bin/ps has finished executing 
+All done bye-bye 
+
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3/executable# ./childProcess /bin/ps /bin/ls /bin/date /bin/who /bin/ps
+/bin/ps 
+/bin/ls 
+/bin/date
+childProcess
+/bin/who
+  PID TTY          TIME CMD
+   60 tty4     00:00:00 init        
+execl failed...
+   61 tty4     00:00:00 bash        
+: No such file or directory
+  128 tty4     00:00:00 childProcess
+  129 tty4     00:00:00 ps
+/bin/ps
+  130 tty4     00:00:00 ls <defunct>
+Command /bin/ps has finished executing
+  131 tty4     00:00:00 date
+  PID TTY          TIME CMD
+Thu Sep 19 22:23:24 AWST 2019
+  133 tty4     00:00:00 ps
+   60 tty4     00:00:00 init
+   61 tty4     00:00:00 bash
+  128 tty4     00:00:00 childProcess
+  129 tty4     00:00:00 ps <defunct>
+  131 tty4     00:00:00 date <defunct>
+  132 tty4     00:00:00 childProcess <defunct>
+  133 tty4     00:00:00 ps
+Command /bin/ls has finished executing 
+Command /bin/date has finished executing 
+Command /bin/who has finished executing 
+Command /bin/ps has finished executing 
+All done bye-bye 
+
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3/executable# ./childProcess /bin/ps /bin/ls /bin/date 
+/bin/ps 
+/bin/ls 
+  PID TTY          TIME CMD
+   60 tty4     00:00:00 init
+/bin/date
+   61 tty4     00:00:00 bash
+  134 tty4     00:00:00 childProcess
+  135 tty4     00:00:00 ps
+  136 tty4     00:00:00 ls
+childProcess
+Thu Sep 19 22:23:47 AWST 2019
+  137 tty4     00:00:00 date
+Command /bin/ps has finished executing
+Command /bin/ls has finished executing 
+Command /bin/date has finished executing 
+All done bye-bye 
+
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q3/executable# ./childProcess /time/please /tell/me
+/time/please 
+execl failed...
+: No such file or directory
+/tell/me
+execl failed...
+Command /time/please has finished executing
+: No such file or directory
+Command /tell/me has finished executing 
+All done bye-bye 

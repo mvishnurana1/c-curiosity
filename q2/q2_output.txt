@@ -1,0 +1,54 @@
+My OS bit size: 32 
+The addresses of  
+ argc = 0xbfe81640 
+ The starting address of 
+ 1st argument argv = 0xbfe816d4 , 
+ last argument address argv = 0xbfe816d4 of the command line arguments of this process
+ 
+ The size of environ variable processor is : 120 bytes 
+
+The starting address environ = 0xbfe81718 
+
+ The Ending address environ = 0xbfe81754 of the environment of this process (values and variables) 
+
+ The starting addresses of function main = 0x45930c 
+
+ function f1 = 0x45923a 
+
+ function f2 = 		0x4591b9 
+
+The addresses 
+ global_x = 0x45c024 
+ global_y = 0x45c04c 
+ global_array1 = 0x45c028 
+ global_array2 = 0x45c050 
+ global_pointer1 = 0x45c03c 
+ global_pointer2 = 0x45c048 
+ global_float = 0x45c038 
+ global_double = 0x45c060 
+
+The addresses of string literals (Hello, world!) is at global_array = 0x45c028 
+The addresses of string literals (bye!) is at global_pointer1 = 0x45c03c 
+ The addresses of 
+ x1 = 0xbfe815e0, 
+ x2 = 0xbfe815e4, 
+ x3 = 0xbfe815e8, 
+ x4 = 0xbfe815bc, 
+ x5 = 0xbfe815b0, 
+ x6 = 0xbfe815f8 
+The addresses of 
+ f1_x = 0xbfe815cc,
+ f1_y = 0xbfe815c8,
+ f1_p1 = 0xbfe815c4,
+ f1_p2 = 0xbfe815c0 
+ The address of the string literal (This is inside f1) is at 
+ f1_p1 = 0x45a092 
+The address of the string (dynamic) 
+ f1_p2 0x11d6170
+The address of 
+ x = 0xbfe815a0 
+The addresses of 
+ f2_p = 0xbfe8158c, 
+ f2_x = 0xbfe81588 
+The address of the dynamically allocated memory 
+ f2_p = 0xbfe8158c 

@@ -1,0 +1,50 @@
+00016120 d _DYNAMIC
+00016384 d _GLOBAL_OFFSET_TABLE_
+00008196 00000004 R _IO_stdin_used
+         w _ITM_deregisterTMCloneTable
+         w _ITM_registerTMCloneTable
+00009864 r __FRAME_END__
+00009452 r __GNU_EH_FRAME_HDR
+00016448 D __TMC_END__
+00016448 B __bss_start
+         w __cxa_finalize@@GLIBC_2.1.3
+00016412 D __data_start
+00004448 t __do_global_dtors_aux
+00016116 t __do_global_dtors_aux_fini_array_entry
+00016416 D __dso_handle
+         U __environ@@GLIBC_2.0
+00016112 t __frame_dummy_init_array_entry
+         w __gmon_start__
+00016116 t __init_array_end
+00016112 t __init_array_start
+00005440 00000001 T __libc_csu_fini
+00005344 00000085 T __libc_csu_init
+         U __libc_start_main@@GLIBC_2.0
+00004288 00000004 T __x86.get_pc_thunk.bx
+00004533 T __x86.get_pc_thunk.dx
+00016448 D _edata
+00016488 B _end
+00005444 T _fini
+00008192 00000004 R _fp_hw
+00004096 t _init
+00004224 00000054 T _start
+00016448 00000001 b completed.6886
+00016412 W data_start
+00004304 t deregister_tm_clones
+         U environ@@GLIBC_2.0
+         U exit@@GLIBC_2.0
+00004666 00000210 T f1
+00004537 00000129 T f2
+00004528 t frame_dummy
+00016424 00000014 D global_array1
+00016464 00000010 B global_array2
+00016480 00000008 B global_double
+00016440 00000004 D global_float
+00016444 00000004 D global_pointer1
+00016456 00000004 B global_pointer2
+00016420 00000004 D global_x
+00016460 00000004 B global_y
+00004876 00000460 T main
+         U malloc@@GLIBC_2.0
+         U printf@@GLIBC_2.0
+00004368 t register_tm_clones

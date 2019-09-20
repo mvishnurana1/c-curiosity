@@ -1,0 +1,53 @@
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# gcc myls.c -o myls
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# ls
+myls  myls.c  newFile
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# ls -l newFile 
+-rwxrwxrwx 1 root root 0 Sep 20 13:07 newFile
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# stat newFile 
+  File: newFile
+  Size: 0               Blocks: 0          IO Block: 512    regular empty file 
+Device: eh/14d  Inode: 3940649674050719  Links: 1
+Access: (0777/-rwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)       
+Access: 2019-09-20 13:07:38.599998200 +0800
+Modify: 2019-09-20 13:07:38.599998200 +0800
+Change: 2019-09-20 13:07:38.599998200 +0800
+ Birth: -
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# ./myls newFile 
+0
+username            : root
+groupname           : root
+size                : 0
+type                : regular file
+permissions         : rwxrwxrwx
+INode Info          : 3940649674050719
+Number of Links     : 1
+Device major version: 0
+Device minor version: 0
+accessed time       : Sep 20    13:07
+modified time       : Sep 20    13:07
+created time        : Sep 20    13:07
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# ./myls .
+0
+username            : root     
+groupname           : root     
+size                : 512      
+type                : directory
+permissions         : rwxrwxrwx
+INode Info          : 79094468455705128
+Number of Links     : 1
+Device major version: 0
+Device minor version: 0
+accessed time       : Sep 20    13:33
+modified time       : Sep 20    13:32
+created time        : Sep 20    13:32
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# stat .
+  File: .
+  Size: 512             Blocks: 0          IO Block: 512    directory
+Device: eh/14d  Inode: 79094468455705128  Links: 1
+Access: (0777/drwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2019-09-20 13:33:56.749406700 +0800
+Modify: 2019-09-20 13:32:32.076138600 +0800
+Change: 2019-09-20 13:32:32.076138600 +0800
+ Birth: -
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# ./myls
+root@vishnu-rana:/mnt/c/Users/Vishnu Rana/Documents/ICT374-OSSP/Assignment/q4# 
